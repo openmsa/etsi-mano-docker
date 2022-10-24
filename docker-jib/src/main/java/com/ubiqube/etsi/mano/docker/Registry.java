@@ -136,7 +136,11 @@ public class Registry {
 	public DescriptorDigest pushManifest(final BuildableManifestTemplate mft, final String tag) {
 		try {
 			return client.pushManifest(mft, tag);
-		} catch (IOException | RegistryException e) {
+		} catch (final RegistryException e) {
+			LOG.trace("Could not upload " + tag, e);
+			LOG.warn("Could not upload docker image {}", tag);
+			return null;
+		} catch (final IOException e) {
 			throw new DockerApiException(e);
 		}
 	}
