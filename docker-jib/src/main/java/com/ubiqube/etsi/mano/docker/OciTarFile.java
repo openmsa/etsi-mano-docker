@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.DigestException;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.compress.archivers.tar.TarFile;
 
@@ -55,7 +56,7 @@ public class OciTarFile implements ContainerTarFile {
 			throw new DockerApiException("Only single OCI manifest is supported.");
 		}
 		this.mf = mfs.get(0);
-		this.configHash = mf.getDigest().getHash();
+		this.configHash = Optional.ofNullable(mf.getDigest()).map(DescriptorDigest::getHash).orElseThrow();
 		final byte[] blob = aa.getContent("blobs/sha256/" + configHash);
 		this.configRaw = blob;
 		try {
@@ -69,7 +70,8 @@ public class OciTarFile implements ContainerTarFile {
 	public void copyTo(final Registry reg, final String tag) {
 		final OciManifestTemplate mft = new OciManifestTemplate();
 		config.getLayers().forEach(x -> {
-			try (final InputStream blobis = aa.getInputStream("blobs/sha256/" + x.getDigest().getHash())) {
+			final String digest = Optional.ofNullable(x.getDigest()).map(DescriptorDigest::getHash).orElseThrow();
+			try (final InputStream blobis = aa.getInputStream("blobs/sha256/" + digest)) {
 				final long sz = reg.pushBlob(blobis, x.getDigest());
 				mft.addLayer(sz, x.getDigest());
 			} catch (final IOException e) {
