@@ -65,6 +65,7 @@ class DockerTest {
 
 	private static RegistryInformations createRegInfo() {
 		final String configPath = System.getenv().get("CONFIGURATION_FILE");
+		LOG.info("Using file: {}", configPath);
 		try (FileInputStream fis = new FileInputStream(configPath)) {
 			props.load(fis);
 		} catch (final IOException e) {
