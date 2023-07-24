@@ -16,7 +16,7 @@
 			<version>${version.jib-core}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.ubiqube.mano</groupId>
+			<groupId>com.ubiqube.mano.docker</groupId>
 			<artifactId>mano-docker-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -42,6 +42,10 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
 </project>
