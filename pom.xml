@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
@@ -11,6 +9,7 @@
 	</parent>
 	<groupId>com.ubiqube.mano.docker</groupId>
 	<artifactId>mano-docker-aggregator</artifactId>
+  <version>3.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<description>Build document for ETSI-MANO Monitoring</description>
 	<modules>
@@ -21,9 +20,4 @@
 		<version.jib-core>0.22.0</version.jib-core>
 		<version.commons-compress>1.21</version.commons-compress>
 	</properties>
-
-	<scm>
-		<developerConnection>scm:git:https://github.com/openmsa/etsi-mano-docker.git</developerConnection>
-		<tag>mano-docker-aggregator-3.0.0</tag>
-	</scm>
 </project>
