@@ -4,12 +4,11 @@
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
 		<artifactId>mano-super-pom</artifactId>
-		<version>3.0.0</version>
+		<version>3.1.0-SNAPSHOT</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ubiqube.mano.docker</groupId>
 	<artifactId>mano-docker-aggregator</artifactId>
-  <version>3.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<description>Build document for ETSI-MANO Monitoring</description>
 	<modules>
@@ -17,7 +16,7 @@
 		<module>docker-jib</module>
 	</modules>
 	<properties>
-		<version.jib-core>0.22.0</version.jib-core>
-		<version.commons-compress>1.21</version.commons-compress>
+		<version.jib-core>0.24.0</version.jib-core>
+		<version.commons-compress>1.23.0</version.commons-compress>
 	</properties>
 </project>
