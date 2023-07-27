@@ -15,8 +15,4 @@
 		<module>docker-api</module>
 		<module>docker-jib</module>
 	</modules>
-	<properties>
-		<version.jib-core>0.24.0</version.jib-core>
-		<version.commons-compress>1.23.0</version.commons-compress>
-	</properties>
 </project>

@@ -13,7 +13,6 @@
 		<dependency>
 			<groupId>com.google.cloud.tools</groupId>
 			<artifactId>jib-core</artifactId>
-			<version>${version.jib-core}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.ubiqube.mano.docker</groupId>
@@ -27,7 +26,6 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-compress</artifactId>
-			<version>${version.commons-compress}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
