@@ -11,6 +11,9 @@
 	<artifactId>mano-docker-aggregator</artifactId>
 	<packaging>pom</packaging>
 	<description>Build document for ETSI-MANO Monitoring</description>
+	<scm>
+		<developerConnection>scm:git:https://github.com/openmsa/etsi-mano-docker.git</developerConnection>
+	</scm>
 	<modules>
 		<module>docker-api</module>
 		<module>docker-jib</module>
