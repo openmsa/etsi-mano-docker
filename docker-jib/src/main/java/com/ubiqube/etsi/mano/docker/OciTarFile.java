@@ -56,7 +56,7 @@ public class OciTarFile implements ContainerTarFile {
 			throw new DockerApiException("Only single OCI manifest is supported.");
 		}
 		this.mf = mfs.get(0);
-		this.configHash = Optional.ofNullable(mf.getDigest()).map(DescriptorDigest::getHash).orElseThrow();
+		this.configHash = Optional.ofNullable(mf.getDigest()).map(DescriptorDigest::getHash).orElseThrow(() -> new DockerApiException("Unknown digest: " + mf.getDigest()));
 		final byte[] blob = aa.getContent("blobs/sha256/" + configHash);
 		this.configRaw = blob;
 		try {
@@ -70,7 +70,7 @@ public class OciTarFile implements ContainerTarFile {
 	public void copyTo(final Registry reg, final String tag) {
 		final OciManifestTemplate mft = new OciManifestTemplate();
 		config.getLayers().forEach(x -> {
-			final String digest = Optional.ofNullable(x.getDigest()).map(DescriptorDigest::getHash).orElseThrow();
+			final String digest = Optional.ofNullable(x.getDigest()).map(DescriptorDigest::getHash).orElseThrow(() -> new DockerApiException("Unknown digest: " + mf.getDigest()));
 			try (final InputStream blobis = aa.getInputStream("blobs/sha256/" + digest)) {
 				final long sz = reg.pushBlob(blobis, x.getDigest());
 				mft.addLayer(sz, x.getDigest());

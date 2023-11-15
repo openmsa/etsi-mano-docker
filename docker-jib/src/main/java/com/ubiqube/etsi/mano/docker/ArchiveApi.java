@@ -33,7 +33,7 @@ public class ArchiveApi {
 	}
 
 	public InputStream getInputStream(final String path) {
-		final TarArchiveEntry index = findEntry(path).orElseThrow();
+		final TarArchiveEntry index = findEntry(path).orElseThrow(() -> new DockerException("Unable to find " + path + ", in tar file."));
 		try {
 			return tf.getInputStream(index);
 		} catch (final IOException e) {
