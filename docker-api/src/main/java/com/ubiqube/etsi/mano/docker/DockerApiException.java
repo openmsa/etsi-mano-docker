@@ -27,4 +27,8 @@ public class DockerApiException extends RuntimeException {
 	public DockerApiException(final String string) {
 		super(string);
 	}
+
+	public DockerApiException(final String string, final Throwable e) {
+		super(string, e);
+	}
 }

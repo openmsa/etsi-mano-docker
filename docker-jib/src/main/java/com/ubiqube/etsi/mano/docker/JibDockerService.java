@@ -50,6 +50,8 @@ public class JibDockerService implements DockerService {
 			tar.copyTo(reg, tag);
 		} catch (final IOException e) {
 			throw new DockerApiException(e);
+		} catch (final DockerException e) {
+			throw new DockerApiException("Error while fetching: " + imageName + ":" + tag, e);
 		}
 	}
 
