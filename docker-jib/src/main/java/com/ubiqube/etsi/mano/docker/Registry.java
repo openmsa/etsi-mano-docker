@@ -18,6 +18,7 @@ package com.ubiqube.etsi.mano.docker;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 import java.security.DigestException;
 import java.security.MessageDigest;
@@ -60,7 +61,8 @@ public class Registry {
 		this.reg = registry;
 		this.evh = EventHandlers.builder().build();
 		this.fhc = new FailoverHttpClient(true, true, evh::dispatch);
-		final Factory factory = RegistryClient.factory(evh, registry.getServer(), imageName, fhc);
+		String host = getHost(registry.getServer());
+		final Factory factory = RegistryClient.factory(evh, host, imageName, fhc);
 		final Credential cred = Credential.from(registry.getUsername(), registry.getPassword());
 		factory.setCredential(cred);
 		this.client = factory.newRegistryClient();
@@ -69,6 +71,11 @@ public class Registry {
 		} catch (IOException | RegistryException e) {
 			throw new DockerApiException(e);
 		}
+	}
+
+	private String getHost(String server) {
+		URI url = URI.create(server);
+		return url.getHost();
 	}
 
 	public static Registry of(final RegistryInformations registry, final String imageName) {
