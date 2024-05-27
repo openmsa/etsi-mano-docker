@@ -54,10 +54,10 @@ class DockerTest {
 	private final JibDockerService dockerService;
 
 	static Stream<Arguments> arguments = Stream.of(
-			Arguments.of(DOCKER_IMAGE, "mano-ci/docker-junit"),
-			Arguments.of(OCI_IMAGE, "mano-ci/oci-junit"),
-			Arguments.of(DOCKER_IMAGE, "mano-ci/docker-junit"),
-			Arguments.of(OCI_IMAGE, "mano-ci/oci-junit"));
+			Arguments.of(DOCKER_IMAGE, "nexus.ubiqube.com/mano-ci/docker-junit"),
+			Arguments.of(OCI_IMAGE, "nexus.ubiqube.com/mano-ci/oci-junit"),
+			Arguments.of(DOCKER_IMAGE, "nexus.ubiqube.com/mano-ci/docker-junit"),
+			Arguments.of(OCI_IMAGE, "nexus.ubiqube.com/mano-ci/oci-junit"));
 
 	public DockerTest() {
 		this.dockerService = new JibDockerService();
