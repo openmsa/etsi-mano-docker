@@ -144,7 +144,7 @@ class DockerTest {
 		final File tgt = download(url);
 		try (InputStream is = new FileInputStream(tgt)) {
 			final RegistryInformations registry = createRegInfo();
-			dockerService.sendToRegistry(is, registry, imageName, "latest");
+			dockerService.sendToRegistry(is, "filename.tgz", registry, imageName, "latest");
 		}
 		assertTrue(true);
 	}

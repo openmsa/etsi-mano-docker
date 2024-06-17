@@ -33,6 +33,18 @@ public class TemporaryFileSentry implements Closeable {
 		}
 	}
 
+	/**
+	 *
+	 * @param extension File extension with the '.'.
+	 */
+	public TemporaryFileSentry(final String extension) {
+		try {
+			file = Files.createTempFile(Paths.get("/tmp/"), "mano", extension);
+		} catch (final IOException e) {
+			throw new DockerApiException(e);
+		}
+	}
+
 	public Path get() {
 		return file;
 	}

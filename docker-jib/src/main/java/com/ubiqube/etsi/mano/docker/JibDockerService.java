@@ -27,7 +27,7 @@ import org.apache.commons.compress.archivers.tar.TarFile;
 public class JibDockerService implements DockerService {
 
 	@Override
-	public void sendToRegistry(final InputStream is, final RegistryInformations registry, final String imageName, final String tag) {
+	public void sendToRegistry(final InputStream is, final String filename, final RegistryInformations registry, final String imageName, final String tag) {
 		try (final TemporaryFileSentry ts = new TemporaryFileSentry();
 				OutputStream os = new FileOutputStream(ts.get().toString())) {
 			is.transferTo(os);

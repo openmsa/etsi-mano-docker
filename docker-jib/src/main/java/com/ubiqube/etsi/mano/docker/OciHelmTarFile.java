@@ -89,7 +89,7 @@ public class OciHelmTarFile implements ContainerTarFile {
 		reg.pushManifest(omt, chart.getVersion());
 	}
 
-	private static InputStream packStream(final InputStream fis, final File file) throws IOException {
+	private static InputStream packStream(final InputStream fis, final File file) {
 		final String fn = file.getName();
 		if (fn.endsWith(".tgz") || fn.endsWith(".tar.gz")) {
 			return fis;

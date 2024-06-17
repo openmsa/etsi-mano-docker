@@ -20,5 +20,5 @@ import java.io.InputStream;
 
 public interface DockerService {
 
-	void sendToRegistry(InputStream is, RegistryInformations registry, String imageName, final String tag);
+	void sendToRegistry(InputStream is, String filename, RegistryInformations registry, String imageName, final String tag);
 }
