@@ -19,6 +19,7 @@ package com.ubiqube.etsi.mano.docker;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
@@ -57,6 +58,17 @@ public class ArchiveApi {
 			throw new DockerApiException(e);
 		}
 
+	}
+
+	public List<TarArchiveEntry> getEntries() {
+		return tf.getEntries();
+	}
+
+	public List<String> search(final String string) {
+		return tf.getEntries().stream().filter(TarArchiveEntry::isFile)
+				.filter(x -> x.getName().endsWith(string))
+				.map(TarArchiveEntry::getName)
+				.toList();
 	}
 
 }
