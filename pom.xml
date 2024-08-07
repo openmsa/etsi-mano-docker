@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.ubiqube.mano</groupId>
 		<artifactId>mano-super-pom</artifactId>
-		<version>4.0.0</version>
+		<version>4.0.1-SNAPSHOT</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ubiqube.mano.docker</groupId>
@@ -13,7 +13,7 @@
 	<description>Build document for ETSI-MANO Monitoring</description>
 	<scm>
 		<developerConnection>scm:git:https://github.com/openmsa/etsi-mano-docker.git</developerConnection>
-		<tag>mano-docker-aggregator-4.0.0</tag>
+		<tag>HEAD</tag>
   </scm>
 	<modules>
 		<module>docker-api</module>

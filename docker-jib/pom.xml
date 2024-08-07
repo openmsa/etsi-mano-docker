@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.ubiqube.mano.docker</groupId>
 		<artifactId>mano-docker-aggregator</artifactId>
-		<version>4.0.0</version>
+		<version>4.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>mano-docker-jib</artifactId>
 	<name>mano-docker-jib</name>
