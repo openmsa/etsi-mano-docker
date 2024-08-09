@@ -12,7 +12,7 @@
 	<packaging>pom</packaging>
 	<description>Build document for ETSI-MANO Monitoring</description>
 	<scm>
-		<developerConnection>scm:git:https://github.com/openmsa/etsi-mano-docker.git</developerConnection>
+		<developerConnection>scm:git:ssh://git@github.com/openmsa/etsi-mano-docker.git</developerConnection>
 		<tag>HEAD</tag>
   </scm>
 	<modules>
