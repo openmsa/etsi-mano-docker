@@ -61,4 +61,9 @@ public class JibDockerService implements DockerService {
 				.anyMatch(x -> "oci-layout".equals(x.getName()));
 	}
 
+	@Override
+	public void verifyConnection(final RegistryInformations registry) {
+		Registry.of(registry, "dummy");
+	}
+
 }

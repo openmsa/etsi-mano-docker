@@ -55,4 +55,9 @@ public class HelmOciDockerService implements DockerService {
 		return is;
 	}
 
+	@Override
+	public void verifyConnection(final RegistryInformations registry) {
+		Registry.of(registry, "dummy");
+	}
+
 }

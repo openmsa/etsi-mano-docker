@@ -54,10 +54,7 @@ public class HelmDockerService implements DockerService {
 	}
 
 	private static void send(final Path path, final RegistryInformations registry, final String imageName, final String tag) {
-		final WebClient wc = WebClient.builder()
-				.baseUrl(registry.getServer())
-				.filter(ExchangeFilterFunctions.basicAuthentication(registry.getUsername(), registry.getPassword()))
-				.build();
+		final WebClient wc = createWebClient(registry);
 		try (InputStream fis = new FileInputStream(path.toFile());) {
 			final Resource resource = new InputStreamResource(fis);
 			final URI uri = UriComponentsBuilder.fromHttpUrl(registry.getServer()).pathSegment("mano").path(buildImageName(imageName, tag)).build().toUri();
@@ -66,7 +63,7 @@ public class HelmDockerService implements DockerService {
 					.uri(uri)
 					.body(BodyInserters.fromResource(resource))
 					.exchangeToMono(response -> {
-						if (response.statusCode().equals(HttpStatus.OK)) {
+						if (HttpStatus.OK.equals(response.statusCode())) {
 							return response.bodyToMono(HttpStatus.class).thenReturn(response.statusCode());
 						}
 						throw new DockerApiException("Error uploading file");
@@ -75,6 +72,13 @@ public class HelmDockerService implements DockerService {
 		} catch (final IOException e) {
 			throw new DockerApiException("Error uploading file");
 		}
+	}
+
+	private static WebClient createWebClient(final RegistryInformations registry) {
+		return WebClient.builder()
+				.baseUrl(registry.getServer())
+				.filter(ExchangeFilterFunctions.basicAuthentication(registry.getUsername(), registry.getPassword()))
+				.build();
 	}
 
 	private static String buildImageName(final String imageName, final String tag) {
@@ -93,6 +97,18 @@ public class HelmDockerService implements DockerService {
 			return new BZip2CompressorInputStream(is);
 		}
 		return is;
+	}
+
+	@Override
+	public void verifyConnection(final RegistryInformations registry) {
+		final URI uri = UriComponentsBuilder.fromHttpUrl(registry.getServer()).path("index.yaml").build().toUri();
+		final WebClient c = createWebClient(registry);
+		c.get()
+				.uri(uri)
+				.retrieve()
+				.onStatus(HttpStatusCode::is4xxClientError, r -> Mono.error(new DockerException("" + r.statusCode())))
+				.toBodilessEntity()
+				.block();
 	}
 
 }
