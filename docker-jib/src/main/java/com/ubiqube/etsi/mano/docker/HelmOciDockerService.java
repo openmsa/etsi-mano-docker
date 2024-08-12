@@ -25,7 +25,7 @@ import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 
-public class HelmOciDockerService implements DockerService {
+public class HelmOciDockerService implements HelmService {
 
 	@Override
 	public void sendToRegistry(final InputStream is, final String filename, final RegistryInformations registry, final String imageName, final String tag) {

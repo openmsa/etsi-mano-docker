@@ -38,7 +38,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import reactor.core.publisher.Mono;
 
-public class HelmDockerService implements DockerService {
+public class HelmDockerService implements HelmService {
 
 	@Override
 	public void sendToRegistry(final InputStream is, final String filename, final RegistryInformations registry, final String imageName, final String tag) {
