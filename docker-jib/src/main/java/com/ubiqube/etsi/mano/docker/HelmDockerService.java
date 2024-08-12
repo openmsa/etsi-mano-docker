@@ -111,4 +111,9 @@ public class HelmDockerService implements DockerService {
 				.block();
 	}
 
+	@Override
+	public String getConnectionType() {
+		return "HELM";
+	}
+
 }

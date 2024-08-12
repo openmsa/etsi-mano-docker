@@ -60,4 +60,9 @@ public class HelmOciDockerService implements DockerService {
 		Registry.of(registry, "dummy");
 	}
 
+	@Override
+	public String getConnectionType() {
+		return "OCI";
+	}
+
 }

@@ -66,4 +66,9 @@ public class JibDockerService implements DockerService {
 		Registry.of(registry, "dummy");
 	}
 
+	@Override
+	public String getConnectionType() {
+		return "DOCKER";
+	}
+
 }
