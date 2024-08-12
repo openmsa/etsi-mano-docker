@@ -61,7 +61,7 @@ public class Registry {
 		this.reg = registry;
 		this.evh = EventHandlers.builder().build();
 		this.fhc = new FailoverHttpClient(true, true, evh::dispatch);
-		String host = getHost(registry.getServer());
+		final String host = getHost(registry.getServer());
 		final Factory factory = RegistryClient.factory(evh, host, imageName, fhc);
 		final Credential cred = Credential.from(registry.getUsername(), registry.getPassword());
 		factory.setCredential(cred);
@@ -73,8 +73,8 @@ public class Registry {
 		}
 	}
 
-	private String getHost(String server) {
-		URI url = URI.create(server);
+	private static String getHost(final String server) {
+		final URI url = URI.create(server);
 		return url.getHost();
 	}
 
