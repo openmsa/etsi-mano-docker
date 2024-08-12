@@ -24,5 +24,4 @@ public interface DockerService {
 
 	void verifyConnection(RegistryInformations registry);
 
-	String getConnectionType();
 }
