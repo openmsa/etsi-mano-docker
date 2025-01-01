@@ -23,7 +23,7 @@ import java.util.Map;
 
 import com.google.cloud.tools.jib.api.DescriptorDigest;
 
-import jakarta.annotation.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public class OciHelmManifestTemplate implements BuildableManifestTemplate {
 

@@ -15,6 +15,10 @@
 			<artifactId>jib-core</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.jspecify</groupId>
+			<artifactId>jspecify</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.ubiqube.mano.docker</groupId>
 			<artifactId>mano-docker-api</artifactId>
 		</dependency>
