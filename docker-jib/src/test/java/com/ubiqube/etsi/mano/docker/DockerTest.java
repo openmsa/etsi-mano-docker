@@ -50,7 +50,7 @@ class DockerTest {
 
 	@TempDir
 	private File tmpDir;
-	final static Properties props = new Properties();
+	private static final Properties props = new Properties();
 	private final JibDockerService dockerService;
 
 	static Stream<Arguments> arguments = Stream.of(
